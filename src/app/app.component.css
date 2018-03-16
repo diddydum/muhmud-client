@@ -1,4 +1,22 @@
 .mud-client {
   margin-left: 2rem;
   margin-top: 2rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+  font-family: 'Courier New', Courier, monospace;
+  border: 1px solid black; 
+}
+
+button[disabled] {
+  color: #888;
+}
+
+input[type='text'] {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+input#command {
+  width: 50em;
 }

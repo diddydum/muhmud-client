@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   websocket: WebSocket;
-  messages = ['Message 1', 'Message 2'];
+  messages = [];
   command = '';
 
   ngOnInit() {
@@ -30,5 +30,9 @@ export class AppComponent implements OnInit {
 
   isConnected() {
     return this.websocket && this.websocket.readyState === WebSocket.OPEN;
+  }
+
+  isCommandEmpty() {
+    return this.command.length === 0;
   }
 }

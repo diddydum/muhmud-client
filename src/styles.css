@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background: #111;
+  color: #ddd;
+}
+
+input[type='text'] {
+  background: #111;
+  color: #ddd;
+}
+
+button {
+  background: #666;
+  color: #ddd;
+}
