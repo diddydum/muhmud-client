@@ -1,3 +1,4 @@
+<a routerLink="/logout">Logout</a>
 <div class="mud-client">
   <div class="messages">
     <li *ngFor="let message of messages">{{message}}</li>
@@ -21,6 +22,9 @@
       <span class="connected" *ngSwitchCase="1">Connected.</span>
       <span class="closing" *ngSwitchCase="2">Closing...</span>
       <span class="disconnected" *ngSwitchCase="3">Disconnected.</span>
+    </span>
+    <span class="auth-expired" *ngIf="authExpired">
+      You are not logged in; please <a routerLink="/login">login</a>.
     </span>
   </div>
 </div>

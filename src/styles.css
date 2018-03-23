@@ -4,12 +4,33 @@ body {
   color: #ddd;
 }
 
+button {
+  background: #666;
+  color: #ddd;
+  font-family: 'Courier New', Courier, monospace;
+  border: 1px solid black; 
+}
+
+button[disabled] {
+  color: #888;
+}
+
 input[type='text'] {
+  font-family: 'Courier New', Courier, monospace;
   background: #111;
   color: #ddd;
 }
 
-button {
-  background: #666;
+input[type='password'] {
+  background: #111;
   color: #ddd;
 }
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
