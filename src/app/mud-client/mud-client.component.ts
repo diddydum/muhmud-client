@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -6,13 +6,15 @@ import { AuthService } from '../auth.service';
   templateUrl: './mud-client.component.html',
   styleUrls: ['./mud-client.component.css']
 })
-export class MudClientComponent implements OnInit {
+export class MudClientComponent implements OnInit, AfterViewChecked {
   constructor(private authService: AuthService) {}
 
   websocket: WebSocket;
   messages = [];
   command = '';
   authExpired = false;
+
+  messagesScrolledToBottom = true;
 
   ngOnInit() {
     // TODO: put ws stuff in its own class
@@ -30,9 +32,21 @@ export class MudClientComponent implements OnInit {
     this.websocket.onopen = () => console.log('DEBUG onopen occurred');
     this.websocket.onerror = () => console.log('DEBUG onerror occurred');
     this.websocket.onmessage = (event) => {
-      console.log('DEBUG onmessage occurred');
       this.messages.push(event.data);
     };
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.messagesScrolledToBottom) {
+      const el = document.getElementById('messages');
+      el.scrollTop = el.scrollHeight;
+    }
+  }
+
+  messagesScrolled(event): void {
+    // check to see if we are still scrolled at bottom
+    const el = event.target;
+    this.messagesScrolledToBottom = (el.scrollHeight - el.clientHeight) === el.scrollTop;
   }
 
   onCommandSubmit() {

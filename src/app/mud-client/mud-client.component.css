@@ -15,7 +15,7 @@ li.message {
   list-style-type: none;
 }
 
-.messages {
+#messages {
   margin: 1em;
   overflow: scroll;
 }

@@ -2,7 +2,8 @@
   <div class="nav">
     <a routerLink="/logout">Logout</a>
   </div>
-  <div class="messages">
+  <div id="messages"
+       (scroll)="messagesScrolled($event)">
     <li *ngFor="let message of messages" class="message">{{message}}</li>
   </div>
   <div class="command-window">
