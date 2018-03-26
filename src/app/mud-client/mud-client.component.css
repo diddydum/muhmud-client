@@ -1,7 +1,28 @@
 .mud-client {
-  margin-left: 2rem;
-  margin-top: 2rem;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2em 1fr 3.5em;
   font-family: 'Courier New', Courier, monospace;
+}
+
+.nav {
+  margin: 1em;
+}
+
+li.message {
+  list-style-type: none;
+}
+
+.messages {
+  margin: 1em;
+  overflow: scroll;
+}
+
+.command-window {
+  margin-top: 1em;
+  margin-left: 1em;
 }
 
 input#command {
