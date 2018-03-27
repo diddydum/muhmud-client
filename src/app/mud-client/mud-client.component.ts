@@ -1,13 +1,17 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ViewEncapsulation } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { SecurityContext } from '@angular/core';
+import { renderMessage } from './render-message';
 
 @Component({
   selector: 'app-mud-client',
   templateUrl: './mud-client.component.html',
-  styleUrls: ['./mud-client.component.css']
+  styleUrls: ['./mud-client.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class MudClientComponent implements OnInit, AfterViewChecked {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private sanitizer: DomSanitizer) {}
 
   websocket: WebSocket;
   messages = [];
@@ -32,7 +36,7 @@ export class MudClientComponent implements OnInit, AfterViewChecked {
     this.websocket.onopen = () => console.log('DEBUG onopen occurred');
     this.websocket.onerror = () => console.log('DEBUG onerror occurred');
     this.websocket.onmessage = (event) => {
-      this.messages.push(event.data);
+      this.messages.push(renderMessage(event.data));
     };
   }
 

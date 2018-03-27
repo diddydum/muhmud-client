@@ -4,7 +4,7 @@
   </div>
   <div id="messages"
        (scroll)="messagesScrolled($event)">
-    <li *ngFor="let message of messages" class="message">{{message}}</li>
+    <li *ngFor="let message of messages" class="message" [innerHTML]="message"></li>
   </div>
   <div class="command-window">
     <form #commandForm="ngForm" (ngSubmit)="onCommandSubmit()">

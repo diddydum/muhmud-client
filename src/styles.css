@@ -9,7 +9,6 @@ body {
 button {
   background: #666;
   color: #ddd;
-  font-family: 'Courier New', Courier, monospace;
   border: 1px solid black; 
 }
 
@@ -18,7 +17,6 @@ button[disabled] {
 }
 
 input[type='text'] {
-  font-family: 'Courier New', Courier, monospace;
   background: #111;
   color: #ddd;
 }
@@ -27,12 +25,3 @@ input[type='password'] {
   background: #111;
   color: #ddd;
 }
-
-.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
-}
-
-.ng-invalid:not(form)  {
-  border-left: 5px solid #a94442; /* red */
-}
-
