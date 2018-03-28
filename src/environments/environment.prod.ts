@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  server: 'foobar.com'
+  server: 'https://api.muhmud.org'
 };

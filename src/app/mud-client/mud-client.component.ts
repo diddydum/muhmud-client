@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SecurityContext } from '@angular/core';
 import { renderMessage } from './render-message';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-mud-client',
@@ -22,7 +23,13 @@ export class MudClientComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     // TODO: put ws stuff in its own class
-    this.websocket = new WebSocket('ws://localhost:8080/ws?token='
+    const wsServer = new URL(environment.server);
+    if (wsServer.protocol === 'https:') {
+      wsServer.protocol = 'wss:';
+    } else {
+      wsServer.protocol = 'ws:';
+    }
+    this.websocket = new WebSocket(wsServer.toString() + 'ws?token='
         + encodeURIComponent(this.authService.token));
     console.log(this.websocket.url);
     this.websocket.onclose = (ev) => {
